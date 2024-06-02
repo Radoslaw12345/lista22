@@ -1,10 +1,7 @@
-name: CI
+name: ci
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -14,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
@@ -27,6 +24,5 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          pip install pytest
+        run: |          
           pytest
